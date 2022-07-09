@@ -706,7 +706,6 @@ var ComponentBase = /** @class */ (function (_super) {
     ], ComponentBase.prototype, "aom", null);
     return ComponentBase;
 }(dist.MiniComponent));
-console.log(888);
 
 var MiniComponent = dist.MiniComponent;
 export { MiniComponent, ComponentBase as default };

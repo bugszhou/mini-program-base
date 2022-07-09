@@ -63,7 +63,7 @@
     },
     "dependencies": {
         "@types/node": "^15.12.2",
-        "mipp": "^1.9.10",
+        "mipp": "^1.9.11",
         "mipp-ali": "^1.18.9"
     }
 }
