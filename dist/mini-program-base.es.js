@@ -452,11 +452,12 @@ var __importDefault = (commonjsGlobal && commonjsGlobal.__importDefault) || func
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MiniComponent = exports.method = exports.lifetimes = exports.pageLifetime = exports.observer = exports.EmptyBase = exports.PageBase = void 0;
+exports.ComponentBase = exports.MiniComponent = exports.method = exports.lifetimes = exports.pageLifetime = exports.observer = exports.EmptyBase = exports.PageBase = void 0;
 var Base_1 = __importDefault(Base_1$2);
 var MiniBase_1$1 = __importDefault(MiniBase_1);
 
 Object.defineProperty(exports, "MiniComponent", { enumerable: true, get: function () { return Base_1$1.MiniComponent; } });
+Object.defineProperty(exports, "ComponentBase", { enumerable: true, get: function () { return Base_1$1.MiniComponent; } });
 Object.defineProperty(exports, "method", { enumerable: true, get: function () { return Base_1$1.method; } });
 Object.defineProperty(exports, "observer", { enumerable: true, get: function () { return Base_1$1.observer; } });
 Object.defineProperty(exports, "pageLifetime", { enumerable: true, get: function () { return Base_1$1.pageLifetime; } });
@@ -984,7 +985,7 @@ var ComponentBase = /** @class */ (function (_super) {
         __metadata("design:returntype", typeof (_a = typeof IComponent !== "undefined" && IComponent) === "function" ? _a : Object)
     ], ComponentBase.prototype, "aom", null);
     return ComponentBase;
-}(dist$1.MiniComponent));
+}(dist$1.ComponentBase));
 
 var MiniComponent = dist.MiniComponent;
 var MiniComponent$1 = dist$1.MiniComponent;
