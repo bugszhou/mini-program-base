@@ -70,6 +70,6 @@
         "lodash.get": "^4.4.2",
         "lodash.isequal": "^4.5.0",
         "mipp": "^1.9.15",
-        "mipp-ali": "^1.18.14"
+        "mipp-ali": "^1.18.15"
     }
 }
