@@ -3973,9 +3973,10 @@ function observer(key) {
 
 var MiniComponent = dist.MiniComponent;
 var MiniComponent = dist.MiniComponent;
+var PageBase = dist.PageBase;
 var MiniComponent$1 = dist$1.MiniComponent;
 var lifetimes = dist.lifetimes;
 var method = dist.method;
 var pageLifetime = dist.pageLifetime;
-export { MiniComponent as AliMiniComponent, ComponentBase, MiniComponent, MiniComponent$1 as WeappMiniComponent, lifetimes, method, observer, pageLifetime };
+export { MiniComponent as AliMiniComponent, ComponentBase, MiniComponent, PageBase, MiniComponent$1 as WeappMiniComponent, lifetimes, method, observer, pageLifetime };
 //# sourceMappingURL=mini-program-base.es.aliapp.js.map
