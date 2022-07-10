@@ -6,6 +6,7 @@ import {
   lifetimes,
   observer,
   IMiniEvent,
+  IMiniComponentOptions,
 } from "mipp";
 import { MiniComponent as AliMiniComponent } from "mipp-ali";
 import ComponentBase from "./ComponentBase";
@@ -21,4 +22,5 @@ export {
   pageLifetime,
   lifetimes,
   IMiniEvent,
+  IMiniComponentOptions,
 };

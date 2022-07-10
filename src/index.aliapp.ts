@@ -1,4 +1,7 @@
-import { MiniComponent as WeappMiniComponent, observer } from "mipp";
+import {
+  MiniComponent as WeappMiniComponent,
+  IMiniComponentOptions,
+} from "mipp";
 import {
   MiniComponent as AliMiniComponent,
   method,
@@ -8,6 +11,7 @@ import {
   IMiniEvent,
 } from "mipp-ali";
 import ComponentBase from "./ComponentBase.aliapp";
+import observer from "./observer";
 
 export {
   ComponentBase,
@@ -20,4 +24,5 @@ export {
   pageLifetime,
   lifetimes,
   IMiniEvent,
+  IMiniComponentOptions,
 };
