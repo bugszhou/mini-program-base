@@ -1,6 +1,6 @@
 {
     "name": "mini-program-base",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "description": "小程序Base类",
     "author": "yiri.zhou",
     "main": "dist/mini-program-base.js",
