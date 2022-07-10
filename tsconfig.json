@@ -12,8 +12,7 @@
     "declaration": true,
     "declarationDir": "./typings",
     "outDir": "dist",
-    "typeRoots": ["node_modules/@types"],
-    "moduleSuffixes": [".weapp", ".aliapp", ""]
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["src"]
 }
