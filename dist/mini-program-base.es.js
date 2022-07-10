@@ -1092,7 +1092,8 @@ var ComponentBase = /** @class */ (function (_super) {
     return ComponentBase;
 }(dist$1.ComponentBase));
 
-function observer() {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function observer(key) {
     return dist$1.observer;
 }
 
