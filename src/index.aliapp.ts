@@ -9,7 +9,7 @@ import {
   pageLifetime,
   lifetimes,
   IMiniEvent,
-  PageBase,
+  MiniPage as PageBase,
 } from "mipp-ali";
 import ComponentBase from "./ComponentBase.aliapp";
 import observer from "./observer";
