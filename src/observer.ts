@@ -1,4 +1,3 @@
-import get from "lodash.get";
 import isEqual from "lodash.isequal";
 
 // 监听Props的变化, for 监听函数
@@ -21,13 +20,11 @@ export default function observer(key?: string) {
         try {
           const subscribeMap = target._propsSubscribeMap || {};
           Object.keys(subscribeMap)
-            .filter(
-              (key) => !isEqual(get(prevProps, key), get(this.props, key)),
-            )
+            .filter((key) => !isEqual(prevProps?.[key], this?.props?.[key]))
             .forEach((key) => {
-              subscribeMap[key]?.forEach(async (fn: any) => {
+              subscribeMap?.[key]?.forEach(async (fn: any) => {
                 if (typeof fn === "function") {
-                  await fn.call(this, get(prevProps, key));
+                  await fn.call(this, this?.props?.[key]);
                 }
               });
             });
