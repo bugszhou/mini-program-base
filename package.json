@@ -5,13 +5,15 @@
     "author": "yiri.zhou",
     "main": "dist/mini-program-base.js",
     "module": "dist/mini-program-base.es.js",
+    "aliappMain": "dist/mini-program-base.aliapp.js",
+    "aliappModule": "dist/mini-program-base.es.aliapp.js",
     "types": "typings/index.d.ts",
     "scripts": {
         "lint": "eslint --ext .ts --ext .tsx src -c .eslintrc.js",
         "fix": "npm run lint --fix",
         "prebuild": "rimraf dist",
         "dev": "rollup -c rollup.config.ts -w",
-        "build": "rollup -c rollup.config.ts",
+        "build": "rollup -c rollup.config.ts && rollup -c rollup.config.aliapp.ts",
         "prepublish": "npm run build",
         "commit": "git-cz --disable-emoji",
         "prepare": "rimraf .husky && npm run husky",
@@ -63,7 +65,7 @@
     },
     "dependencies": {
         "@types/node": "^15.12.2",
-        "mipp": "^1.9.13",
-        "mipp-ali": "^1.18.9"
+        "mipp": "^1.9.15",
+        "mipp-ali": "^1.18.11"
     }
 }

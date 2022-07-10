@@ -1094,9 +1094,9 @@ var ComponentBase = /** @class */ (function (_super) {
 
 var MiniComponent = dist.MiniComponent;
 var MiniComponent$1 = dist$1.MiniComponent;
-var lifetimes = dist$1.lifetimes;
-var method = dist$1.method;
+var lifetimes = dist.lifetimes;
+var method = dist.method;
 var observer = dist$1.observer;
-var pageLifetime = dist$1.pageLifetime;
+var pageLifetime = dist.pageLifetime;
 export { MiniComponent as AliMiniComponent, ComponentBase, MiniComponent$1 as WeappMiniComponent, lifetimes, method, observer, pageLifetime };
-//# sourceMappingURL=mini-program-base.es.js.map
+//# sourceMappingURL=mini-program-base.es.aliapp.js.map
