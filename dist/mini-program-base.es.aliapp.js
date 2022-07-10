@@ -1,6 +1,5 @@
-import { ComponentBase as ComponentBase$1 } from 'mipp';
 export { MiniComponent as WeappMiniComponent } from 'mipp';
-import { method } from 'mipp-ali';
+import { method, ComponentBase as ComponentBase$1 } from 'mipp-ali';
 export { MiniComponent as AliMiniComponent, MiniComponent, PageBase, lifetimes, method, pageLifetime } from 'mipp-ali';
 
 /*! *****************************************************************************

@@ -1,5 +1,8 @@
-import { ComponentBase as MiniComponentBase } from "mipp";
-import { MiniComponent, method } from "mipp-ali";
+import {
+  MiniComponent,
+  method,
+  ComponentBase as MiniComponentBase,
+} from "mipp-ali";
 
 export default class ComponentBase<
   IData = any,
