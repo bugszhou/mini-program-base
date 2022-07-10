@@ -5,11 +5,13 @@ import {
   IComponentData,
   pageLifetime,
   lifetimes,
+  IMiniEvent,
 } from "mipp-ali";
 import ComponentBase from "./ComponentBase.aliapp";
 
 export {
   ComponentBase,
+  AliMiniComponent as MiniComponent,
   WeappMiniComponent,
   AliMiniComponent,
   IComponentData,
@@ -17,4 +19,5 @@ export {
   method,
   pageLifetime,
   lifetimes,
+  IMiniEvent,
 };
