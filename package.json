@@ -68,6 +68,6 @@
         "@types/node": "^15.12.2",
         "lodash.isequal": "^4.5.0",
         "mipp": "^1.9.15",
-        "mipp-ali": "^1.18.17"
+        "mipp-ali": "^1.18.18"
     }
 }
