@@ -9,7 +9,7 @@ import {
   IMiniComponentOptions,
   PageBase,
 } from "mipp";
-import { MiniComponent as AliMiniComponent } from "mipp-ali";
+import { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from "mipp-ali";
 import ComponentBase from "./ComponentBase";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -30,4 +30,6 @@ export {
   IMiniEvent,
   IMiniComponentOptions,
   PageBase,
+  PageBase as WeappPageBase,
+  AliappPageBase,
 };

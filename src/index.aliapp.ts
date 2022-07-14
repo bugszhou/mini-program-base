@@ -1,6 +1,7 @@
 import {
   MiniComponent as WeappMiniComponent,
   IMiniComponentOptions,
+  PageBase as WeappPageBase,
 } from "mipp";
 import {
   MiniComponent as AliMiniComponent,
@@ -27,4 +28,6 @@ export {
   IMiniEvent,
   IMiniComponentOptions,
   PageBase,
+  PageBase as AliappPageBase,
+  WeappPageBase,
 };

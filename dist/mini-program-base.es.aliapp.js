@@ -1,6 +1,6 @@
-export { MiniComponent as WeappMiniComponent } from 'mipp';
+export { MiniComponent as WeappMiniComponent, PageBase as WeappPageBase } from 'mipp';
 import { method, ComponentBase as ComponentBase$1 } from 'mipp-ali';
-export { MiniComponent as AliMiniComponent, MiniComponent, MiniPage as PageBase, lifetimes, method, pageLifetime } from 'mipp-ali';
+export { MiniComponent as AliMiniComponent, MiniPage as AliappPageBase, MiniComponent, MiniPage as PageBase, lifetimes, method, pageLifetime } from 'mipp-ali';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
