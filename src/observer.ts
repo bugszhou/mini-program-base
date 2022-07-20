@@ -12,29 +12,66 @@ export default function observer(key?: string) {
 
     if (!target._propsSubscribeMap) {
       target._propsSubscribeMap = {};
-      const publisher = target.didUpdate;
+      // didMount 监听
+      const mountPublisher = target.didMount;
+      target.didMount = async function newDidMount(...mountArgs: any[]) {
+        try {
+          const subscribeMap = target._propsSubscribeMap || {};
+          Object.keys(subscribeMap).forEach((mapKey) => {
+            const observerKeys = mapKey?.split(",").map((key) => key.trim());
+            const fnParams = observerKeys.map((key) => ({
+              value: this.props?.[key] ?? this.data?.[key],
+              changed: false,
+            }));
+            subscribeMap[mapKey]?.forEach((fn: any) => {
+              if (typeof fn === "function") {
+                fn.call(this, ...fnParams.map((param) => param.value));
+              }
+            });
+          });
+          if (typeof mountPublisher === "function") {
+            const result = await mountPublisher.call(this, ...mountArgs);
+            return result;
+          }
+        } catch (e) {
+          console.error(e);
+          throw e;
+        }
+      };
+      // didUpdate 监听
+      const updatePublisher = target.didUpdate;
       target.didUpdate = async function newDidUpdate(
         prevProps: any,
         prevData: any,
       ) {
         try {
           const subscribeMap = target._propsSubscribeMap || {};
-          Object.keys(subscribeMap)
-            .filter((key) => !isEqual(prevProps?.[key], this?.props?.[key]))
-            .forEach((key) => {
-              subscribeMap?.[key]?.forEach(async (fn: any) => {
-                if (typeof fn === "function") {
-                  await fn.call(this, this?.props?.[key]);
-                }
-              });
+          Object.keys(subscribeMap).forEach((mapKey) => {
+            const observerKeys = mapKey?.split(",").map((key) => key.trim());
+            const fnParams = observerKeys.map((key) => ({
+              value: this.props?.[key] ?? this.data?.[key],
+              changed:
+                !isEqual(prevProps?.[key], this.props?.[key]) ||
+                !isEqual(prevData?.[key], this.data?.[key]),
+            }));
+            if (fnParams.every((params) => !params.changed)) return;
+            subscribeMap[mapKey]?.forEach((fn: any) => {
+              if (typeof fn === "function") {
+                fn.call(this, ...fnParams.map((param) => param.value));
+              }
             });
-          if (typeof publisher === "function") {
-            const result = await publisher.call(this, prevProps, prevData);
+          });
+          if (typeof updatePublisher === "function") {
+            const result = await updatePublisher.call(
+              this,
+              prevProps,
+              prevData,
+            );
             return result;
           }
         } catch (e) {
+          console.error(e);
           throw e;
-        } finally {
         }
       };
     }

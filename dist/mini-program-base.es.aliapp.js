@@ -2,7 +2,7 @@ export { MiniComponent as WeappMiniComponent, PageBase as WeappPageBase } from '
 import { method, ComponentBase as ComponentBase$1 } from 'mipp-ali';
 export { MiniComponent as AliMiniComponent, MiniPage as AliappPageBase, MiniComponent, MiniPage as PageBase, lifetimes, method, pageLifetime } from 'mipp-ali';
 
-/*! *****************************************************************************
+/******************************************************************************
 Copyright (c) Microsoft Corporation.
 
 Permission to use, copy, modify, and/or distribute this software for any
@@ -26,6 +26,8 @@ var extendStatics = function(d, b) {
 };
 
 function __extends(d, b) {
+    if (typeof b !== "function" && b !== null)
+        throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
     extendStatics(d, b);
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
@@ -78,6 +80,16 @@ function __generator(thisArg, body) {
         } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
+}
+
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
 }
 
 var ComponentBase = /** @class */ (function (_super) {
@@ -1963,46 +1975,93 @@ function observer(key) {
         var subscribeKey = key || property;
         if (!target._propsSubscribeMap) {
             target._propsSubscribeMap = {};
-            var publisher_1 = target.didUpdate;
-            target.didUpdate = function newDidUpdate(prevProps, prevData) {
+            // didMount 监听
+            var mountPublisher_1 = target.didMount;
+            target.didMount = function newDidMount() {
+                var mountArgs = [];
+                for (var _i = 0; _i < arguments.length; _i++) {
+                    mountArgs[_i] = arguments[_i];
+                }
                 return __awaiter(this, void 0, void 0, function () {
                     var subscribeMap_1, result, e_1;
                     var _this = this;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
-                                _a.trys.push([0, 3, 4, 5]);
+                                _a.trys.push([0, 3, , 4]);
                                 subscribeMap_1 = target._propsSubscribeMap || {};
-                                Object.keys(subscribeMap_1)
-                                    .filter(function (key) { var _a; return !lodash_isequal(prevProps === null || prevProps === void 0 ? void 0 : prevProps[key], (_a = _this === null || _this === void 0 ? void 0 : _this.props) === null || _a === void 0 ? void 0 : _a[key]); })
-                                    .forEach(function (key) {
+                                Object.keys(subscribeMap_1).forEach(function (mapKey) {
                                     var _a;
-                                    (_a = subscribeMap_1 === null || subscribeMap_1 === void 0 ? void 0 : subscribeMap_1[key]) === null || _a === void 0 ? void 0 : _a.forEach(function (fn) { return __awaiter(_this, void 0, void 0, function () {
-                                        var _a;
-                                        return __generator(this, function (_b) {
-                                            switch (_b.label) {
-                                                case 0:
-                                                    if (!(typeof fn === "function")) return [3 /*break*/, 2];
-                                                    return [4 /*yield*/, fn.call(this, (_a = this === null || this === void 0 ? void 0 : this.props) === null || _a === void 0 ? void 0 : _a[key])];
-                                                case 1:
-                                                    _b.sent();
-                                                    _b.label = 2;
-                                                case 2: return [2 /*return*/];
-                                            }
+                                    var observerKeys = mapKey === null || mapKey === void 0 ? void 0 : mapKey.split(",").map(function (key) { return key.trim(); });
+                                    var fnParams = observerKeys.map(function (key) {
+                                        var _a, _b, _c;
+                                        return ({
+                                            value: (_b = (_a = _this.props) === null || _a === void 0 ? void 0 : _a[key]) !== null && _b !== void 0 ? _b : (_c = _this.data) === null || _c === void 0 ? void 0 : _c[key],
+                                            changed: false,
                                         });
-                                    }); });
+                                    });
+                                    (_a = subscribeMap_1[mapKey]) === null || _a === void 0 ? void 0 : _a.forEach(function (fn) {
+                                        if (typeof fn === "function") {
+                                            fn.call.apply(fn, __spreadArray([_this], fnParams.map(function (param) { return param.value; }), false));
+                                        }
+                                    });
                                 });
-                                if (!(typeof publisher_1 === "function")) return [3 /*break*/, 2];
-                                return [4 /*yield*/, publisher_1.call(this, prevProps, prevData)];
+                                if (!(typeof mountPublisher_1 === "function")) return [3 /*break*/, 2];
+                                return [4 /*yield*/, mountPublisher_1.call.apply(mountPublisher_1, __spreadArray([this], mountArgs, false))];
                             case 1:
                                 result = _a.sent();
                                 return [2 /*return*/, result];
-                            case 2: return [3 /*break*/, 5];
+                            case 2: return [3 /*break*/, 4];
                             case 3:
                                 e_1 = _a.sent();
+                                console.error(e_1);
                                 throw e_1;
-                            case 4: return [7 /*endfinally*/];
-                            case 5: return [2 /*return*/];
+                            case 4: return [2 /*return*/];
+                        }
+                    });
+                });
+            };
+            // didUpdate 监听
+            var updatePublisher_1 = target.didUpdate;
+            target.didUpdate = function newDidUpdate(prevProps, prevData) {
+                return __awaiter(this, void 0, void 0, function () {
+                    var subscribeMap_2, result, e_2;
+                    var _this = this;
+                    return __generator(this, function (_a) {
+                        switch (_a.label) {
+                            case 0:
+                                _a.trys.push([0, 3, , 4]);
+                                subscribeMap_2 = target._propsSubscribeMap || {};
+                                Object.keys(subscribeMap_2).forEach(function (mapKey) {
+                                    var _a;
+                                    var observerKeys = mapKey === null || mapKey === void 0 ? void 0 : mapKey.split(",").map(function (key) { return key.trim(); });
+                                    var fnParams = observerKeys.map(function (key) {
+                                        var _a, _b, _c, _d, _e;
+                                        return ({
+                                            value: (_b = (_a = _this.props) === null || _a === void 0 ? void 0 : _a[key]) !== null && _b !== void 0 ? _b : (_c = _this.data) === null || _c === void 0 ? void 0 : _c[key],
+                                            changed: !lodash_isequal(prevProps === null || prevProps === void 0 ? void 0 : prevProps[key], (_d = _this.props) === null || _d === void 0 ? void 0 : _d[key]) ||
+                                                !lodash_isequal(prevData === null || prevData === void 0 ? void 0 : prevData[key], (_e = _this.data) === null || _e === void 0 ? void 0 : _e[key]),
+                                        });
+                                    });
+                                    if (fnParams.every(function (params) { return !params.changed; }))
+                                        return;
+                                    (_a = subscribeMap_2[mapKey]) === null || _a === void 0 ? void 0 : _a.forEach(function (fn) {
+                                        if (typeof fn === "function") {
+                                            fn.call.apply(fn, __spreadArray([_this], fnParams.map(function (param) { return param.value; }), false));
+                                        }
+                                    });
+                                });
+                                if (!(typeof updatePublisher_1 === "function")) return [3 /*break*/, 2];
+                                return [4 /*yield*/, updatePublisher_1.call(this, prevProps, prevData)];
+                            case 1:
+                                result = _a.sent();
+                                return [2 /*return*/, result];
+                            case 2: return [3 /*break*/, 4];
+                            case 3:
+                                e_2 = _a.sent();
+                                console.error(e_2);
+                                throw e_2;
+                            case 4: return [2 /*return*/];
                         }
                     });
                 });
