@@ -207,7 +207,7 @@ function checkSubscribe(_a) {
     var context = _a.context, subscribeMap = _a.subscribeMap, _b = _a.forceEmit, forceEmit = _b === void 0 ? false : _b, _c = _a.prevProps, prevProps = _c === void 0 ? {} : _c, _d = _a.prevData, prevData = _d === void 0 ? {} : _d;
     Object.keys(subscribeMap).forEach(function (mapKey) {
         var _a;
-        var observerKeys = mapKey === null || mapKey === void 0 ? void 0 : mapKey.split(",").map(function (key) { return key === null || key === void 0 ? void 0 : key.replaceAll(".**", "").trim(); });
+        var observerKeys = mapKey === null || mapKey === void 0 ? void 0 : mapKey.split(",").map(function (key) { return key === null || key === void 0 ? void 0 : key.replace(".**", "").trim(); });
         var fnParams = observerKeys === null || observerKeys === void 0 ? void 0 : observerKeys.map(function (key) {
             if (!key) {
                 return {

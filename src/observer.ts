@@ -118,7 +118,7 @@ function checkSubscribe({
   Object.keys(subscribeMap).forEach((mapKey) => {
     const observerKeys = mapKey
       ?.split(",")
-      .map((key) => key?.replaceAll(".**", "").trim());
+      .map((key) => key?.replace(".**", "").trim());
     const fnParams = observerKeys?.map((key): ObserverItem => {
       if (!key) {
         return {
