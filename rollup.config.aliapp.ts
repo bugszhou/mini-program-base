@@ -26,7 +26,7 @@ export default {
     { file: pkg.aliappModule, format: "es", sourcemap: true },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: ["mipp-ali", "mipp"],
+  external: ["mipp-ali", "mipp", "lodash.get", "lodash.isequal"],
   watch: {
     include: "src/**",
   },
