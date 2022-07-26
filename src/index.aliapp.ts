@@ -14,6 +14,7 @@ import {
 } from "mipp-ali";
 import ComponentBase from "./ComponentBase.aliapp";
 import observer from "./observer";
+export * from "./Decorators/index.aliapp";
 
 export {
   ComponentBase,

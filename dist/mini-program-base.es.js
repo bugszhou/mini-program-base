@@ -1,4 +1,4 @@
-import { method, ComponentBase as ComponentBase$1, observer as observer$1 } from 'mipp';
+import { method, ComponentBase as ComponentBase$1, PageBase, observer as observer$1 } from 'mipp';
 export { MiniComponent, PageBase, MiniComponent as WeappMiniComponent, PageBase as WeappPageBase, lifetimes, method, pageLifetime } from 'mipp';
 export { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from 'mipp-ali';
 
@@ -62,10 +62,20 @@ var ComponentBase = /** @class */ (function (_super) {
     return ComponentBase;
 }(ComponentBase$1));
 
+function MiniProgramPage(target) {
+    var obj = new target();
+    PageBase.render(obj);
+}
+
+function MiniProgramComponent(target) {
+    var obj = new target();
+    ComponentBase$1.render(obj);
+}
+
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function observer(key) {
     return observer$1;
 }
 
-export { ComponentBase, observer };
+export { ComponentBase, MiniProgramComponent, MiniProgramPage, observer };
 //# sourceMappingURL=mini-program-base.es.js.map

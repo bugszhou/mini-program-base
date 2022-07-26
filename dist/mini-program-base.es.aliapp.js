@@ -1,5 +1,5 @@
 export { MiniComponent as WeappMiniComponent, PageBase as WeappPageBase } from 'mipp';
-import { method, ComponentBase as ComponentBase$1 } from 'mipp-ali';
+import { method, ComponentBase as ComponentBase$1, PageBase } from 'mipp-ali';
 export { MiniComponent as AliMiniComponent, MiniPage as AliappPageBase, MiniComponent, MiniPage as PageBase, lifetimes, method, pageLifetime } from 'mipp-ali';
 import get from 'lodash.get';
 import isEqual from 'lodash.isequal';
@@ -270,5 +270,15 @@ function checkSubscribe(_a) {
     });
 }
 
-export { ComponentBase, observer };
+function MiniProgramPage(target) {
+    var obj = new target();
+    PageBase.render(obj);
+}
+
+function MiniProgramComponent(target) {
+    var obj = new target();
+    ComponentBase$1.render(obj);
+}
+
+export { ComponentBase, MiniProgramComponent, MiniProgramPage, observer };
 //# sourceMappingURL=mini-program-base.es.aliapp.js.map

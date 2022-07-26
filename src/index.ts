@@ -9,8 +9,12 @@ import {
   IMiniComponentOptions,
   PageBase,
 } from "mipp";
-import { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from "mipp-ali";
+import {
+  MiniComponent as AliMiniComponent,
+  PageBase as AliappPageBase,
+} from "mipp-ali";
 import ComponentBase from "./ComponentBase";
+export * from "./Decorators/index";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function observer(key?: string) {
