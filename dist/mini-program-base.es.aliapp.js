@@ -270,8 +270,13 @@ function checkSubscribe(_a) {
     });
 }
 
+function generateRandomString() {
+    return Date.now().toString(32) + Math.random().toString(32).substring(2);
+}
+
 function MiniProgramPage(target) {
     var obj = new target();
+    obj.__serialNumber = generateRandomString();
     MiniPage.render(obj);
 }
 
