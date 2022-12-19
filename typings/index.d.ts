@@ -4,3 +4,4 @@ import ComponentBase from "./ComponentBase";
 export * from "./Decorators/index";
 declare function observer(key?: string): typeof weappObserver;
 export { ComponentBase, WeappMiniComponent as MiniComponent, WeappMiniComponent, AliMiniComponent, IComponentData, observer, method, pageLifetime, lifetimes, IMiniEvent, IMiniComponentOptions, PageBase, PageBase as WeappPageBase, AliappPageBase, };
+//# sourceMappingURL=index.d.ts.map

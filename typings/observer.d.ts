@@ -34,3 +34,4 @@ export interface ObserverParams {
  * 具体类型可参考OBSERVER_TYPE
  */
 export default function observer(key?: string): (target: any, property: string, descriptor: PropertyDescriptor) => void;
+//# sourceMappingURL=observer.d.ts.map

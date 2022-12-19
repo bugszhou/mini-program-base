@@ -4,3 +4,4 @@ import ComponentBase from "./ComponentBase.aliapp";
 import observer from "./observer";
 export * from "./Decorators/index.aliapp";
 export { ComponentBase, AliMiniComponent as MiniComponent, WeappMiniComponent, AliMiniComponent, IComponentData, observer, method, pageLifetime, lifetimes, IMiniEvent, IMiniComponentOptions, PageBase, PageBase as AliappPageBase, WeappPageBase, };
+//# sourceMappingURL=index.aliapp.d.ts.map

@@ -3,3 +3,4 @@ export default class ComponentBase<IData = any> extends MiniComponentBase<IData>
     aom<IComponent = MiniComponent<any>>(): IComponent;
 }
 export { MiniComponent };
+//# sourceMappingURL=ComponentBase.aliapp.d.ts.map
