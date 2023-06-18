@@ -3,6 +3,7 @@ import {
   method,
   ComponentBase as MiniComponentBase,
 } from "mipp-ali";
+import { IEventBase } from "./Decorators/events";
 
 export default class ComponentBase<
   IData = any,
@@ -10,6 +11,11 @@ export default class ComponentBase<
   @method
   aom<IComponent = MiniComponent<any>>(): IComponent {
     return this as unknown as IComponent;
+  }
+
+  @method
+  getEvents<IEvent = IEventBase>(): IEvent {
+    throw new TypeError("需要在子类重写: getEvents 方法");
   }
 }
 

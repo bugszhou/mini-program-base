@@ -1,5 +1,5 @@
 import { method, ComponentBase as ComponentBase$1, PageBase, observer as observer$1 } from 'mipp';
-export { MiniComponent, PageBase, MiniComponent as WeappMiniComponent, PageBase as WeappPageBase, lifetimes, method, pageLifetime } from 'mipp';
+export { MiniComponent, MiniComponent as WeappMiniComponent, lifetimes, method, pageLifetime } from 'mipp';
 export { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from 'mipp-ali';
 
 /******************************************************************************
@@ -52,13 +52,22 @@ var ComponentBase = /** @class */ (function (_super) {
     ComponentBase.prototype.aom = function () {
         return this;
     };
-    var _a;
+    ComponentBase.prototype.getEvents = function () {
+        throw new TypeError("需要在子类重写: getEvents 方法");
+    };
+    var _a, _b;
     __decorate([
         method,
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", typeof (_a = typeof IComponent !== "undefined" && IComponent) === "function" ? _a : Object)
     ], ComponentBase.prototype, "aom", null);
+    __decorate([
+        method,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", typeof (_b = typeof IEvent !== "undefined" && IEvent) === "function" ? _b : Object)
+    ], ComponentBase.prototype, "getEvents", null);
     return ComponentBase;
 }(ComponentBase$1));
 
@@ -81,6 +90,16 @@ function MiniProgramComponent(target) {
 function observer(key) {
     return observer$1;
 }
+var ViewBase = /** @class */ (function (_super) {
+    __extends(ViewBase, _super);
+    function ViewBase() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ViewBase.prototype.getEvents = function () {
+        throw new TypeError("需要在子类重写: getEvents 方法");
+    };
+    return ViewBase;
+}(PageBase));
 
-export { ComponentBase, MiniProgramComponent, MiniProgramPage, observer };
+export { ComponentBase, MiniProgramComponent, MiniProgramPage, ViewBase as PageBase, ViewBase as WeappPageBase, observer };
 //# sourceMappingURL=mini-program-base.es.js.map

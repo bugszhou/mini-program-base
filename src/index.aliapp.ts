@@ -14,7 +14,14 @@ import {
 } from "mipp-ali";
 import ComponentBase from "./ComponentBase.aliapp";
 import observer from "./observer";
+import { IEventBase } from "./Decorators/events";
 export * from "./Decorators/index.aliapp";
+
+class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
+  getEvents<IEvent = IEventBase>(): IEvent {
+    throw new TypeError("需要在子类重写: getEvents 方法");
+  }
+}
 
 export {
   ComponentBase,
@@ -28,7 +35,7 @@ export {
   lifetimes,
   IMiniEvent,
   IMiniComponentOptions,
-  PageBase,
-  PageBase as AliappPageBase,
+  ViewBase as PageBase,
+  ViewBase as AliappPageBase,
   WeappPageBase,
 };

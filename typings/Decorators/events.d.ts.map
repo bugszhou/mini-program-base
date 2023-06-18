@@ -1,0 +1,1 @@
+{"version":3,"file":"events.d.ts","sourceRoot":"","sources":["../../src/Decorators/events.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,UAAU;IACzB,cAAc,CAAC,KAAK,GAAG,GAAG,KAAK,KAAK,EAAE,CAAC;IACvC,OAAO,CAAC,KAAK,GAAG,GAAG,KAAK,KAAK,EAAE,CAAC;IAChC;;OAEG;IACH,eAAe,IAAI,IAAI,CAAC;IACxB;;OAEG;IACH,QAAQ,IAAI,IAAI,CAAC;CAClB"}

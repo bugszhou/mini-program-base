@@ -14,11 +14,18 @@ import {
   PageBase as AliappPageBase,
 } from "mipp-ali";
 import ComponentBase from "./ComponentBase";
+import { IEventBase } from "./Decorators/events";
 export * from "./Decorators/index";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function observer(key?: string) {
   return weappObserver;
+}
+
+class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
+  getEvents<IEvent = IEventBase>(): IEvent {
+    throw new TypeError("需要在子类重写: getEvents 方法");
+  }
 }
 
 export {
@@ -33,7 +40,7 @@ export {
   lifetimes,
   IMiniEvent,
   IMiniComponentOptions,
-  PageBase,
-  PageBase as WeappPageBase,
+  ViewBase as PageBase,
+  ViewBase as WeappPageBase,
   AliappPageBase,
 };
