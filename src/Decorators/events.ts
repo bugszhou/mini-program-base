@@ -4,9 +4,9 @@ export interface IEventBase {
   /**
    * 页面和页面间触发事件
    */
-  dispatchInViews(): void;
+  dispatchInViews<IData = any>(data?: IData): void;
   /**
    * 触发全部事件
    */
-  dispatch(): void;
+  dispatch<IData = any>(data?: IData, dispatchView?: any): void;
 }
