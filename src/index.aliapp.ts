@@ -18,6 +18,51 @@ import { IEventBase } from "./Decorators/events";
 export * from "./Decorators/index.aliapp";
 
 class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
+  viewStatus: "load" | "show" | "ready" = "load";
+
+  onLoad(...opts: any) {
+    try {
+      this.viewStatus = "load";
+      if (typeof super.onLoad === "function") {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        super.onLoad(...opts);
+      }
+    } catch {}
+  }
+
+  onShow(...opts: any) {
+    try {
+      if (this.viewStatus !== "ready") {
+        this.viewStatus = "show";
+      }
+      if (typeof super.onShow === "function") {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        super.onShow(...opts);
+      }
+    } catch {}
+  }
+
+  onReady(...opts: any) {
+    try {
+      this.viewStatus = "ready";
+      if (typeof super.onReady === "function") {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        super.onReady(...opts);
+      }
+    } catch {}
+  }
+
+  /**
+   * 视图是否准备完成
+   * @returns boolean
+   */
+  isReady() {
+    return this?.viewStatus === "ready";
+  }
+
   getEvents<IEvent = IEventBase>(): IEvent {
     throw new TypeError("需要在子类重写: getEvents 方法");
   }

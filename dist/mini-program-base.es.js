@@ -1,4 +1,4 @@
-import { method, ComponentBase as ComponentBase$1, PageBase, observer as observer$1 } from 'mipp';
+import { method, lifetimes, ComponentBase as ComponentBase$1, PageBase, observer as observer$1 } from 'mipp';
 export { MiniComponent, MiniComponent as WeappMiniComponent, lifetimes, method, pageLifetime } from 'mipp';
 export { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from 'mipp-ali';
 
@@ -47,10 +47,66 @@ function __metadata(metadataKey, metadataValue) {
 var ComponentBase = /** @class */ (function (_super) {
     __extends(ComponentBase, _super);
     function ComponentBase() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.viewStatus = "load";
+        return _this;
     }
     ComponentBase.prototype.aom = function () {
         return this;
+    };
+    ComponentBase.prototype.created = function () {
+        var opts = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            opts[_i] = arguments[_i];
+        }
+        try {
+            this.viewStatus = "load";
+            if (typeof _super.prototype.created === "function") {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                _super.prototype.created.apply(this, opts);
+            }
+        }
+        catch (_a) { }
+    };
+    ComponentBase.prototype.show = function () {
+        var opts = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            opts[_i] = arguments[_i];
+        }
+        try {
+            if (this.viewStatus !== "ready") {
+                this.viewStatus = "show";
+            }
+            if (typeof _super.prototype.show === "function") {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                _super.prototype.show.apply(this, opts);
+            }
+        }
+        catch (_a) { }
+    };
+    ComponentBase.prototype.ready = function () {
+        var opts = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            opts[_i] = arguments[_i];
+        }
+        try {
+            this.viewStatus = "ready";
+            if (typeof _super.prototype.ready === "function") {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                _super.prototype.ready.apply(this, opts);
+            }
+        }
+        catch (_a) { }
+    };
+    /**
+     * 视图是否准备完成
+     * @returns boolean
+     */
+    ComponentBase.prototype.isReady = function () {
+        return (this === null || this === void 0 ? void 0 : this.viewStatus) === "ready";
     };
     ComponentBase.prototype.getEvents = function () {
         throw new TypeError("需要在子类重写: getEvents 方法");
@@ -62,6 +118,30 @@ var ComponentBase = /** @class */ (function (_super) {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", typeof (_a = typeof IComponent !== "undefined" && IComponent) === "function" ? _a : Object)
     ], ComponentBase.prototype, "aom", null);
+    __decorate([
+        lifetimes,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], ComponentBase.prototype, "created", null);
+    __decorate([
+        lifetimes,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], ComponentBase.prototype, "show", null);
+    __decorate([
+        lifetimes,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], ComponentBase.prototype, "ready", null);
+    __decorate([
+        method,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], ComponentBase.prototype, "isReady", null);
     __decorate([
         method,
         __metadata("design:type", Function),
@@ -93,8 +173,64 @@ function observer(key) {
 var ViewBase = /** @class */ (function (_super) {
     __extends(ViewBase, _super);
     function ViewBase() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.viewStatus = "load";
+        return _this;
     }
+    ViewBase.prototype.onLoad = function () {
+        var opts = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            opts[_i] = arguments[_i];
+        }
+        try {
+            this.viewStatus = "load";
+            if (typeof _super.prototype.onLoad === "function") {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                _super.prototype.onLoad.apply(this, opts);
+            }
+        }
+        catch (_a) { }
+    };
+    ViewBase.prototype.onShow = function () {
+        var opts = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            opts[_i] = arguments[_i];
+        }
+        try {
+            if (this.viewStatus !== "ready") {
+                this.viewStatus = "show";
+            }
+            if (typeof _super.prototype.onShow === "function") {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                _super.prototype.onShow.apply(this, opts);
+            }
+        }
+        catch (_a) { }
+    };
+    ViewBase.prototype.onReady = function () {
+        var opts = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            opts[_i] = arguments[_i];
+        }
+        try {
+            this.viewStatus = "ready";
+            if (typeof _super.prototype.onReady === "function") {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
+                _super.prototype.onReady.apply(this, opts);
+            }
+        }
+        catch (_a) { }
+    };
+    /**
+     * 视图是否准备完成
+     * @returns boolean
+     */
+    ViewBase.prototype.isReady = function () {
+        return (this === null || this === void 0 ? void 0 : this.viewStatus) === "ready";
+    };
     ViewBase.prototype.getEvents = function () {
         throw new TypeError("需要在子类重写: getEvents 方法");
     };
