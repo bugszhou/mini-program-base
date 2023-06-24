@@ -25,6 +25,14 @@ function observer(key?: string) {
 class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
   viewStatus: "load" | "show" | "ready" = "load";
 
+  isComponent() {
+    return false;
+  }
+
+  isPage() {
+    return true;
+  }
+
   onLoad(...opts: any) {
     try {
       this.viewStatus = "load";

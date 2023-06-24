@@ -16,6 +16,16 @@ export default class ComponentBase<
     return this as unknown as IComponent;
   }
 
+  @method
+  isComponent() {
+    return true;
+  }
+
+  @method
+  isPage() {
+    return false;
+  }
+
   @lifetime
   created(...opts: any) {
     try {

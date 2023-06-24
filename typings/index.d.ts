@@ -6,6 +6,8 @@ export * from "./Decorators/index";
 declare function observer(key?: string): typeof weappObserver;
 declare class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
     viewStatus: "load" | "show" | "ready";
+    isComponent(): boolean;
+    isPage(): boolean;
     onLoad(...opts: any): void;
     onShow(...opts: any): void;
     onReady(...opts: any): void;

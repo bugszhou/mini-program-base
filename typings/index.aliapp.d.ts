@@ -6,6 +6,8 @@ import { IEventBase } from "./Decorators/events";
 export * from "./Decorators/index.aliapp";
 declare class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
     viewStatus: "load" | "show" | "ready";
+    isComponent(): boolean;
+    isPage(): boolean;
     onLoad(...opts: any): void;
     onShow(...opts: any): void;
     onReady(...opts: any): void;

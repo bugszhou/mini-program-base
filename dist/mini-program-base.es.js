@@ -64,6 +64,12 @@ var ComponentBase = /** @class */ (function (_super) {
     ComponentBase.prototype.aom = function () {
         return this;
     };
+    ComponentBase.prototype.isComponent = function () {
+        return true;
+    };
+    ComponentBase.prototype.isPage = function () {
+        return false;
+    };
     ComponentBase.prototype.created = function () {
         var _a;
         var opts = [];
@@ -126,6 +132,18 @@ var ComponentBase = /** @class */ (function (_super) {
         __metadata("design:returntype", typeof (_a = typeof IComponent !== "undefined" && IComponent) === "function" ? _a : Object)
     ], ComponentBase.prototype, "aom", null);
     __decorate([
+        method,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], ComponentBase.prototype, "isComponent", null);
+    __decorate([
+        method,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], ComponentBase.prototype, "isPage", null);
+    __decorate([
         lifetime,
         __metadata("design:type", Function),
         __metadata("design:paramtypes", [Object]),
@@ -184,6 +202,12 @@ var ViewBase = /** @class */ (function (_super) {
         _this.viewStatus = "load";
         return _this;
     }
+    ViewBase.prototype.isComponent = function () {
+        return false;
+    };
+    ViewBase.prototype.isPage = function () {
+        return true;
+    };
     ViewBase.prototype.onLoad = function () {
         var opts = [];
         for (var _i = 0; _i < arguments.length; _i++) {
