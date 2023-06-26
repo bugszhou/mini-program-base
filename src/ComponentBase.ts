@@ -2,14 +2,13 @@ import {
   MiniComponent,
   method,
   ComponentBase as MiniComponentBase,
-  lifetime,
 } from "mipp";
 import { IEventBase } from "./Decorators/events";
 
 export default class ComponentBase<
   IData = any,
 > extends MiniComponentBase<IData> {
-  viewStatus: "load" | "show" | "ready" = "load";
+  viewStatus: "load" | "ready" = "load";
 
   @method
   aom<IComponent = MiniComponent<any>>(): IComponent {
@@ -24,38 +23,6 @@ export default class ComponentBase<
   @method
   isPage() {
     return false;
-  }
-
-  @lifetime
-  created(...opts: any) {
-    try {
-      this.viewStatus = "load";
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      super.created?.(...opts);
-    } catch {}
-  }
-
-  @lifetime
-  show(...opts: any) {
-    try {
-      if (this.viewStatus !== "ready") {
-        this.viewStatus = "show";
-      }
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      super.show?.(...opts);
-    } catch {}
-  }
-
-  @lifetime
-  ready(...opts: any) {
-    try {
-      this.viewStatus = "ready";
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      super.ready?.(...opts);
-    } catch {}
   }
 
   /**

@@ -9,6 +9,7 @@ import {
   IComponentData,
   pageLifetime,
   lifetimes,
+  lifetime,
   IMiniEvent,
   MiniPage as PageBase,
 } from "mipp-ali";
@@ -86,6 +87,7 @@ export {
   method,
   pageLifetime,
   lifetimes,
+  lifetime,
   IMiniEvent,
   IMiniComponentOptions,
   ViewBase as PageBase,

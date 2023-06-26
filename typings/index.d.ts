@@ -1,4 +1,4 @@
-import { IComponentData, MiniComponent as WeappMiniComponent, method, pageLifetime, lifetimes, observer as weappObserver, IMiniEvent, IMiniComponentOptions, PageBase } from "mipp";
+import { IComponentData, MiniComponent as WeappMiniComponent, method, pageLifetime, lifetimes, lifetime, observer as weappObserver, IMiniEvent, IMiniComponentOptions, PageBase } from "mipp";
 import { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from "mipp-ali";
 import ComponentBase from "./ComponentBase";
 import { IEventBase } from "./Decorators/events";
@@ -8,9 +8,6 @@ declare class ViewBase<IData extends Record<string, any>> extends PageBase<IData
     viewStatus: "load" | "show" | "ready";
     isComponent(): boolean;
     isPage(): boolean;
-    onLoad(...opts: any): void;
-    onShow(...opts: any): void;
-    onReady(...opts: any): void;
     /**
      * 视图是否准备完成
      * @returns boolean
@@ -18,5 +15,5 @@ declare class ViewBase<IData extends Record<string, any>> extends PageBase<IData
     isReady(): boolean;
     getEvents<IEvent = IEventBase>(): IEvent;
 }
-export { ComponentBase, WeappMiniComponent as MiniComponent, WeappMiniComponent, AliMiniComponent, IComponentData, observer, method, pageLifetime, lifetimes, IMiniEvent, IMiniComponentOptions, ViewBase as PageBase, ViewBase as WeappPageBase, AliappPageBase, };
+export { ComponentBase, WeappMiniComponent as MiniComponent, WeappMiniComponent, AliMiniComponent, IComponentData, observer, method, pageLifetime, lifetimes, lifetime, IMiniEvent, IMiniComponentOptions, ViewBase as PageBase, ViewBase as WeappPageBase, AliappPageBase, };
 //# sourceMappingURL=index.d.ts.map

@@ -1,5 +1,5 @@
-import { method, lifetime, ComponentBase as ComponentBase$1, PageBase, observer as observer$1 } from 'mipp';
-export { MiniComponent, MiniComponent as WeappMiniComponent, lifetimes, method, pageLifetime } from 'mipp';
+import { method, ComponentBase as ComponentBase$1, PageBase, observer as observer$1 } from 'mipp';
+export { MiniComponent, MiniComponent as WeappMiniComponent, lifetime, lifetimes, method, pageLifetime } from 'mipp';
 export { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from 'mipp-ali';
 
 /******************************************************************************
@@ -44,16 +44,6 @@ function __metadata(metadataKey, metadataValue) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
 }
 
-function __spreadArray(to, from, pack) {
-    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
-        if (ar || !(i in from)) {
-            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
-            ar[i] = from[i];
-        }
-    }
-    return to.concat(ar || Array.prototype.slice.call(from));
-}
-
 var ComponentBase = /** @class */ (function (_super) {
     __extends(ComponentBase, _super);
     function ComponentBase() {
@@ -69,50 +59,6 @@ var ComponentBase = /** @class */ (function (_super) {
     };
     ComponentBase.prototype.isPage = function () {
         return false;
-    };
-    ComponentBase.prototype.created = function () {
-        var _a;
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            this.viewStatus = "load";
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            (_a = _super.prototype.created) === null || _a === void 0 ? void 0 : _a.call.apply(_a, __spreadArray([this], opts, false));
-        }
-        catch (_b) { }
-    };
-    ComponentBase.prototype.show = function () {
-        var _a;
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            if (this.viewStatus !== "ready") {
-                this.viewStatus = "show";
-            }
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            (_a = _super.prototype.show) === null || _a === void 0 ? void 0 : _a.call.apply(_a, __spreadArray([this], opts, false));
-        }
-        catch (_b) { }
-    };
-    ComponentBase.prototype.ready = function () {
-        var _a;
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            this.viewStatus = "ready";
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            (_a = _super.prototype.ready) === null || _a === void 0 ? void 0 : _a.call.apply(_a, __spreadArray([this], opts, false));
-        }
-        catch (_b) { }
     };
     /**
      * 视图是否准备完成
@@ -143,24 +89,6 @@ var ComponentBase = /** @class */ (function (_super) {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], ComponentBase.prototype, "isPage", null);
-    __decorate([
-        lifetime,
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], ComponentBase.prototype, "created", null);
-    __decorate([
-        lifetime,
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], ComponentBase.prototype, "show", null);
-    __decorate([
-        lifetime,
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", [Object]),
-        __metadata("design:returntype", void 0)
-    ], ComponentBase.prototype, "ready", null);
     __decorate([
         method,
         __metadata("design:type", Function),
@@ -207,53 +135,6 @@ var ViewBase = /** @class */ (function (_super) {
     };
     ViewBase.prototype.isPage = function () {
         return true;
-    };
-    ViewBase.prototype.onLoad = function () {
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            this.viewStatus = "load";
-            if (typeof _super.prototype.onLoad === "function") {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                _super.prototype.onLoad.apply(this, opts);
-            }
-        }
-        catch (_a) { }
-    };
-    ViewBase.prototype.onShow = function () {
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            if (this.viewStatus !== "ready") {
-                this.viewStatus = "show";
-            }
-            if (typeof _super.prototype.onShow === "function") {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                _super.prototype.onShow.apply(this, opts);
-            }
-        }
-        catch (_a) { }
-    };
-    ViewBase.prototype.onReady = function () {
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            this.viewStatus = "ready";
-            if (typeof _super.prototype.onReady === "function") {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                _super.prototype.onReady.apply(this, opts);
-            }
-        }
-        catch (_a) { }
     };
     /**
      * 视图是否准备完成
