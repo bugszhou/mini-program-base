@@ -10,6 +10,7 @@ import {
   pageLifetime,
   lifetimes,
   lifetime,
+  extendLifetime,
   IMiniEvent,
   MiniPage as PageBase,
 } from "mipp-ali";
@@ -93,4 +94,5 @@ export {
   ViewBase as PageBase,
   ViewBase as AliappPageBase,
   WeappPageBase,
+  extendLifetime,
 };

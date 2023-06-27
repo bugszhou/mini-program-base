@@ -1,6 +1,6 @@
 export { MiniComponent as WeappMiniComponent, PageBase as WeappPageBase } from 'mipp';
 import { method, ComponentBase as ComponentBase$1, MiniPage } from 'mipp-ali';
-export { MiniComponent as AliMiniComponent, MiniComponent, lifetime, lifetimes, method, pageLifetime } from 'mipp-ali';
+export { MiniComponent as AliMiniComponent, MiniComponent, extendLifetime, lifetime, lifetimes, method, pageLifetime } from 'mipp-ali';
 import get from 'lodash.get';
 import isEqual from 'lodash.isequal';
 

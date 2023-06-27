@@ -1,5 +1,5 @@
 import { MiniComponent as WeappMiniComponent, IMiniComponentOptions, PageBase as WeappPageBase } from "mipp";
-import { MiniComponent as AliMiniComponent, method, IComponentData, pageLifetime, lifetimes, lifetime, IMiniEvent, MiniPage as PageBase } from "mipp-ali";
+import { MiniComponent as AliMiniComponent, method, IComponentData, pageLifetime, lifetimes, lifetime, extendLifetime, IMiniEvent, MiniPage as PageBase } from "mipp-ali";
 import ComponentBase from "./ComponentBase.aliapp";
 import observer from "./observer";
 import { IEventBase } from "./Decorators/events";
@@ -18,5 +18,5 @@ declare class ViewBase<IData extends Record<string, any>> extends PageBase<IData
     isReady(): boolean;
     getEvents<IEvent = IEventBase>(): IEvent;
 }
-export { ComponentBase, AliMiniComponent as MiniComponent, WeappMiniComponent, AliMiniComponent, IComponentData, observer, method, pageLifetime, lifetimes, lifetime, IMiniEvent, IMiniComponentOptions, ViewBase as PageBase, ViewBase as AliappPageBase, WeappPageBase, };
+export { ComponentBase, AliMiniComponent as MiniComponent, WeappMiniComponent, AliMiniComponent, IComponentData, observer, method, pageLifetime, lifetimes, lifetime, IMiniEvent, IMiniComponentOptions, ViewBase as PageBase, ViewBase as AliappPageBase, WeappPageBase, extendLifetime, };
 //# sourceMappingURL=index.aliapp.d.ts.map
