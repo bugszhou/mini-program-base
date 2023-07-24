@@ -99,6 +99,7 @@ var ComponentBase = /** @class */ (function (_super) {
     function ComponentBase() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.viewStatus = "load";
+        _this.pageViewIns = null;
         return _this;
     }
     ComponentBase.prototype.aom = function () {
@@ -109,6 +110,10 @@ var ComponentBase = /** @class */ (function (_super) {
     };
     ComponentBase.prototype.isPage = function () {
         return false;
+    };
+    ComponentBase.prototype.getPageViewIns = function () {
+        var _a;
+        return (_a = this === null || this === void 0 ? void 0 : this.pageViewIns) !== null && _a !== void 0 ? _a : null;
     };
     /**
      * 视图是否准备完成
@@ -139,6 +144,12 @@ var ComponentBase = /** @class */ (function (_super) {
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], ComponentBase.prototype, "isPage", null);
+    __decorate([
+        method,
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], ComponentBase.prototype, "getPageViewIns", null);
     __decorate([
         method,
         __metadata("design:type", Function),
@@ -332,6 +343,7 @@ var ViewBase = /** @class */ (function (_super) {
     function ViewBase() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.viewStatus = "load";
+        _this.myComponents = [];
         return _this;
     }
     ViewBase.prototype.isComponent = function () {
@@ -339,6 +351,10 @@ var ViewBase = /** @class */ (function (_super) {
     };
     ViewBase.prototype.isPage = function () {
         return true;
+    };
+    ViewBase.prototype.getComponents = function () {
+        var _a;
+        return (_a = this === null || this === void 0 ? void 0 : this.myComponents) !== null && _a !== void 0 ? _a : [];
     };
     ViewBase.prototype.onLoad = function () {
         var opts = [];

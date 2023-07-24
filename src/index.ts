@@ -27,12 +27,18 @@ function observer(key?: string) {
 class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
   viewStatus: "load" | "show" | "ready" = "load";
 
+  protected myComponents: any[] = [];
+
   isComponent() {
     return false;
   }
 
   isPage() {
     return true;
+  }
+
+  getComponents() {
+    return this?.myComponents ?? [];
   }
 
   /**

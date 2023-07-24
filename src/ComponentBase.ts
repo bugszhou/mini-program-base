@@ -10,6 +10,7 @@ export default class ComponentBase<
 > extends MiniComponentBase<IData> {
   viewStatus: "load" | "ready" = "load";
 
+  protected pageViewIns: any = null;
   @method
   aom<IComponent = MiniComponent<any>>(): IComponent {
     return this as unknown as IComponent;
@@ -23,6 +24,11 @@ export default class ComponentBase<
   @method
   isPage() {
     return false;
+  }
+
+  @method
+  getPageViewIns() {
+    return this?.pageViewIns ?? null;
   }
 
   /**

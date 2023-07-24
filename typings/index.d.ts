@@ -6,8 +6,10 @@ export * from "./Decorators/index";
 declare function observer(key?: string): typeof weappObserver;
 declare class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
     viewStatus: "load" | "show" | "ready";
+    protected myComponents: any[];
     isComponent(): boolean;
     isPage(): boolean;
+    getComponents(): any[];
     /**
      * 视图是否准备完成
      * @returns boolean
