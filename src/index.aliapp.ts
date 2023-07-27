@@ -19,10 +19,15 @@ import observer from "./observer";
 import { IEventBase } from "./Decorators/events";
 export * from "./Decorators/index.aliapp";
 
-class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
+class ViewBase<
+  IData extends Record<string, any>,
+  IOptions = any,
+> extends PageBase<IData> {
   viewStatus: "load" | "show" | "ready" = "load";
 
   protected myComponents: any[] = [];
+
+  protected viewOptions: IOptions = Object.create(null);
 
   isComponent() {
     return false;
@@ -36,38 +41,16 @@ class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
     return this?.myComponents ?? [];
   }
 
-  onLoad(...opts: any) {
-    try {
-      this.viewStatus = "load";
-      if (typeof super.onLoad === "function") {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        super.onLoad(...opts);
-      }
-    } catch {}
+  getViewOptions(): IOptions {
+    return this.viewOptions ?? Object.create(null);
   }
 
-  onShow(...opts: any) {
+  beforeOnLoad(...opts: any[]) {
     try {
-      if (this.viewStatus !== "ready") {
-        this.viewStatus = "show";
-      }
-      if (typeof super.onShow === "function") {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        super.onShow(...opts);
-      }
-    } catch {}
-  }
-
-  onReady(...opts: any) {
-    try {
-      this.viewStatus = "ready";
-      if (typeof super.onReady === "function") {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        super.onReady(...opts);
-      }
+      this.viewOptions = opts?.[0] ?? Object.create(null);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      super.beforeOnLoad?.(...opts);
     } catch {}
   }
 

@@ -24,10 +24,15 @@ function observer(key?: string) {
   return weappObserver;
 }
 
-class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
+class ViewBase<
+  IData extends Record<string, any>,
+  IOptions = any,
+> extends PageBase<IData> {
   viewStatus: "load" | "show" | "ready" = "load";
 
   protected myComponents: any[] = [];
+
+  protected viewOptions: IOptions = Object.create(null);
 
   isComponent() {
     return false;
@@ -41,6 +46,10 @@ class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
     return this?.myComponents ?? [];
   }
 
+  getViewOptions(): IOptions {
+    return this.viewOptions ?? Object.create(null);
+  }
+
   /**
    * 视图是否准备完成
    * @returns boolean
@@ -51,6 +60,15 @@ class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
 
   getEvents<IEvent = IEventBase>(): IEvent {
     throw new TypeError("需要在子类重写: getEvents 方法");
+  }
+
+  beforeOnLoad(...opts: any[]) {
+    try {
+      this.viewOptions = opts?.[0] ?? Object.create(null);
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      super.beforeOnLoad?.(...opts);
+    } catch {}
   }
 }
 

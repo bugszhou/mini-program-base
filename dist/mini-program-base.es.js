@@ -44,6 +44,16 @@ function __metadata(metadataKey, metadataValue) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(metadataKey, metadataValue);
 }
 
+function __spreadArray(to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+}
+
 var ComponentBase = /** @class */ (function (_super) {
     __extends(ComponentBase, _super);
     function ComponentBase() {
@@ -140,6 +150,7 @@ var ViewBase = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.viewStatus = "load";
         _this.myComponents = [];
+        _this.viewOptions = Object.create(null);
         return _this;
     }
     ViewBase.prototype.isComponent = function () {
@@ -152,6 +163,10 @@ var ViewBase = /** @class */ (function (_super) {
         var _a;
         return (_a = this === null || this === void 0 ? void 0 : this.myComponents) !== null && _a !== void 0 ? _a : [];
     };
+    ViewBase.prototype.getViewOptions = function () {
+        var _a;
+        return (_a = this.viewOptions) !== null && _a !== void 0 ? _a : Object.create(null);
+    };
     /**
      * 视图是否准备完成
      * @returns boolean
@@ -161,6 +176,20 @@ var ViewBase = /** @class */ (function (_super) {
     };
     ViewBase.prototype.getEvents = function () {
         throw new TypeError("需要在子类重写: getEvents 方法");
+    };
+    ViewBase.prototype.beforeOnLoad = function () {
+        var _a, _b;
+        var opts = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            opts[_i] = arguments[_i];
+        }
+        try {
+            this.viewOptions = (_a = opts === null || opts === void 0 ? void 0 : opts[0]) !== null && _a !== void 0 ? _a : Object.create(null);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            (_b = _super.prototype.beforeOnLoad) === null || _b === void 0 ? void 0 : _b.call.apply(_b, __spreadArray([this], opts, false));
+        }
+        catch (_c) { }
     };
     return ViewBase;
 }(PageBase));

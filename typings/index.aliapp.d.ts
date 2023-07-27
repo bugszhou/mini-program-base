@@ -4,15 +4,15 @@ import ComponentBase from "./ComponentBase.aliapp";
 import observer from "./observer";
 import { IEventBase } from "./Decorators/events";
 export * from "./Decorators/index.aliapp";
-declare class ViewBase<IData extends Record<string, any>> extends PageBase<IData> {
+declare class ViewBase<IData extends Record<string, any>, IOptions = any> extends PageBase<IData> {
     viewStatus: "load" | "show" | "ready";
     protected myComponents: any[];
+    protected viewOptions: IOptions;
     isComponent(): boolean;
     isPage(): boolean;
     getComponents(): any[];
-    onLoad(...opts: any): void;
-    onShow(...opts: any): void;
-    onReady(...opts: any): void;
+    getViewOptions(): IOptions;
+    beforeOnLoad(...opts: any[]): void;
     /**
      * 视图是否准备完成
      * @returns boolean

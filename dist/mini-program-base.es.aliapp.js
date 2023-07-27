@@ -344,6 +344,7 @@ var ViewBase = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.viewStatus = "load";
         _this.myComponents = [];
+        _this.viewOptions = Object.create(null);
         return _this;
     }
     ViewBase.prototype.isComponent = function () {
@@ -356,52 +357,23 @@ var ViewBase = /** @class */ (function (_super) {
         var _a;
         return (_a = this === null || this === void 0 ? void 0 : this.myComponents) !== null && _a !== void 0 ? _a : [];
     };
-    ViewBase.prototype.onLoad = function () {
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            this.viewStatus = "load";
-            if (typeof _super.prototype.onLoad === "function") {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                _super.prototype.onLoad.apply(this, opts);
-            }
-        }
-        catch (_a) { }
+    ViewBase.prototype.getViewOptions = function () {
+        var _a;
+        return (_a = this.viewOptions) !== null && _a !== void 0 ? _a : Object.create(null);
     };
-    ViewBase.prototype.onShow = function () {
+    ViewBase.prototype.beforeOnLoad = function () {
+        var _a, _b;
         var opts = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             opts[_i] = arguments[_i];
         }
         try {
-            if (this.viewStatus !== "ready") {
-                this.viewStatus = "show";
-            }
-            if (typeof _super.prototype.onShow === "function") {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                _super.prototype.onShow.apply(this, opts);
-            }
+            this.viewOptions = (_a = opts === null || opts === void 0 ? void 0 : opts[0]) !== null && _a !== void 0 ? _a : Object.create(null);
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            (_b = _super.prototype.beforeOnLoad) === null || _b === void 0 ? void 0 : _b.call.apply(_b, __spreadArray([this], opts, false));
         }
-        catch (_a) { }
-    };
-    ViewBase.prototype.onReady = function () {
-        var opts = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            opts[_i] = arguments[_i];
-        }
-        try {
-            this.viewStatus = "ready";
-            if (typeof _super.prototype.onReady === "function") {
-                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                // @ts-ignore
-                _super.prototype.onReady.apply(this, opts);
-            }
-        }
-        catch (_a) { }
+        catch (_c) { }
     };
     /**
      * 视图是否准备完成
