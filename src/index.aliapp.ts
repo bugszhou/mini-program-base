@@ -27,7 +27,9 @@ class ViewBase<
 
   protected myComponents: any[] = [];
 
-  protected viewOptions: IOptions = Object.create(null);
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  protected viewOptions: IOptions = {};
 
   isComponent() {
     return false;

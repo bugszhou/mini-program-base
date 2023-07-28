@@ -150,7 +150,9 @@ var ViewBase = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.viewStatus = "load";
         _this.myComponents = [];
-        _this.viewOptions = Object.create(null);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        _this.viewOptions = {};
         return _this;
     }
     ViewBase.prototype.isComponent = function () {
