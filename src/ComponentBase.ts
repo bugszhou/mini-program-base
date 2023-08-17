@@ -5,12 +5,24 @@ import {
 } from "mipp";
 import { IEventBase } from "./Decorators/events";
 
+MiniComponentBase.before = () => {
+  return ComponentBase?.before?.() ?? Object.create(null);
+};
+
 export default class ComponentBase<
   IData = any,
 > extends MiniComponentBase<IData> {
   viewStatus: "load" | "ready" = "load";
 
   protected pageViewIns: any = null;
+
+  static before(): {
+    created: () => void;
+    ready: () => void;
+  } {
+    return Object.create(null);
+  }
+
   @method
   aom<IComponent = MiniComponent<any>>(): IComponent {
     return this as unknown as IComponent;

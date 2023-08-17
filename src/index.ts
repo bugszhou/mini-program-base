@@ -24,6 +24,10 @@ function observer(key?: string) {
   return weappObserver;
 }
 
+PageBase.before = () => {
+  return ViewBase?.before?.() ?? Object.create(null);
+};
+
 class ViewBase<
   IData extends Record<string, any>,
   IOptions = any,
@@ -35,6 +39,14 @@ class ViewBase<
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   protected viewOptions: IOptions = {};
+
+  static before(): {
+    onLoad: () => void;
+    onShow: () => void;
+    onReady: () => void;
+  } {
+    return Object.create(null);
+  }
 
   isComponent() {
     return false;

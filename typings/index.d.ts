@@ -8,6 +8,11 @@ declare class ViewBase<IData extends Record<string, any>, IOptions = any> extend
     viewStatus: "load" | "show" | "ready";
     protected myComponents: any[];
     protected viewOptions: IOptions;
+    static before(): {
+        onLoad: () => void;
+        onShow: () => void;
+        onReady: () => void;
+    };
     isComponent(): boolean;
     isPage(): boolean;
     getComponents(): any[];

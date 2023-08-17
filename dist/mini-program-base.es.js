@@ -1,4 +1,4 @@
-import { method, ComponentBase as ComponentBase$1, PageBase, observer as observer$1 } from 'mipp';
+import { ComponentBase as ComponentBase$1, method, PageBase, observer as observer$1 } from 'mipp';
 export { MiniComponent, MiniComponent as WeappMiniComponent, extendLifetime, lifetime, lifetimes, method, pageLifetime } from 'mipp';
 export { MiniComponent as AliMiniComponent, PageBase as AliappPageBase } from 'mipp-ali';
 
@@ -54,6 +54,10 @@ function __spreadArray(to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 }
 
+ComponentBase$1.before = function () {
+    var _a, _b;
+    return (_b = (_a = ComponentBase === null || ComponentBase === void 0 ? void 0 : ComponentBase.before) === null || _a === void 0 ? void 0 : _a.call(ComponentBase)) !== null && _b !== void 0 ? _b : Object.create(null);
+};
 var ComponentBase = /** @class */ (function (_super) {
     __extends(ComponentBase, _super);
     function ComponentBase() {
@@ -62,6 +66,9 @@ var ComponentBase = /** @class */ (function (_super) {
         _this.pageViewIns = null;
         return _this;
     }
+    ComponentBase.before = function () {
+        return Object.create(null);
+    };
     ComponentBase.prototype.aom = function () {
         return this;
     };
@@ -144,6 +151,10 @@ function MiniProgramComponent(target) {
 function observer(key) {
     return observer$1;
 }
+PageBase.before = function () {
+    var _a, _b;
+    return (_b = (_a = ViewBase === null || ViewBase === void 0 ? void 0 : ViewBase.before) === null || _a === void 0 ? void 0 : _a.call(ViewBase)) !== null && _b !== void 0 ? _b : Object.create(null);
+};
 var ViewBase = /** @class */ (function (_super) {
     __extends(ViewBase, _super);
     function ViewBase() {
@@ -155,6 +166,9 @@ var ViewBase = /** @class */ (function (_super) {
         _this.viewOptions = {};
         return _this;
     }
+    ViewBase.before = function () {
+        return Object.create(null);
+    };
     ViewBase.prototype.isComponent = function () {
         return false;
     };

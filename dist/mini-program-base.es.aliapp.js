@@ -1,5 +1,5 @@
 export { MiniComponent as WeappMiniComponent, PageBase as WeappPageBase } from 'mipp';
-import { method, ComponentBase as ComponentBase$1, MiniPage } from 'mipp-ali';
+import { ComponentBase as ComponentBase$1, method, MiniPage } from 'mipp-ali';
 export { MiniComponent as AliMiniComponent, MiniComponent, extendLifetime, lifetime, lifetimes, method, pageLifetime } from 'mipp-ali';
 import get from 'lodash.get';
 import isEqual from 'lodash.isequal';
@@ -94,6 +94,10 @@ function __spreadArray(to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 }
 
+ComponentBase$1.before = function () {
+    var _a, _b;
+    return (_b = (_a = ComponentBase === null || ComponentBase === void 0 ? void 0 : ComponentBase.before) === null || _a === void 0 ? void 0 : _a.call(ComponentBase)) !== null && _b !== void 0 ? _b : Object.create(null);
+};
 var ComponentBase = /** @class */ (function (_super) {
     __extends(ComponentBase, _super);
     function ComponentBase() {
@@ -102,6 +106,9 @@ var ComponentBase = /** @class */ (function (_super) {
         _this.pageViewIns = null;
         return _this;
     }
+    ComponentBase.before = function () {
+        return Object.create(null);
+    };
     ComponentBase.prototype.aom = function () {
         return this;
     };
@@ -338,6 +345,10 @@ function MiniProgramComponent(target) {
     ComponentBase$1.render(obj);
 }
 
+MiniPage.before = function () {
+    var _a, _b;
+    return (_b = (_a = ViewBase === null || ViewBase === void 0 ? void 0 : ViewBase.before) === null || _a === void 0 ? void 0 : _a.call(ViewBase)) !== null && _b !== void 0 ? _b : Object.create(null);
+};
 var ViewBase = /** @class */ (function (_super) {
     __extends(ViewBase, _super);
     function ViewBase() {
@@ -349,6 +360,9 @@ var ViewBase = /** @class */ (function (_super) {
         _this.viewOptions = {};
         return _this;
     }
+    ViewBase.before = function () {
+        return Object.create(null);
+    };
     ViewBase.prototype.isComponent = function () {
         return false;
     };
