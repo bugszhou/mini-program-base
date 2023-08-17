@@ -16,10 +16,10 @@ export default class ComponentBase<
 
   protected pageViewIns: any = null;
 
-  static before(): {
+  static before(): Partial<{
     created: () => void;
     ready: () => void;
-  } {
+  }> {
     return Object.create(null);
   }
 

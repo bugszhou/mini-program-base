@@ -35,11 +35,11 @@ class ViewBase<
   // @ts-ignore
   protected viewOptions: IOptions = {};
 
-  static before(): {
+  static before(): Partial<{
     onLoad: () => void;
     onShow: () => void;
     onReady: () => void;
-  } {
+  }> {
     return Object.create(null);
   }
 

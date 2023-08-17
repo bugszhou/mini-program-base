@@ -3,10 +3,10 @@ import { IEventBase } from "./Decorators/events";
 export default class ComponentBase<IData = any> extends MiniComponentBase<IData> {
     viewStatus: "load" | "show" | "ready";
     protected pageViewIns: any;
-    static before(): {
+    static before(): Partial<{
         created: () => void;
         ready: () => void;
-    };
+    }>;
     aom<IComponent = MiniComponent<any>>(): IComponent;
     isComponent(): boolean;
     isPage(): boolean;
