@@ -9,4 +9,8 @@ export interface IEventBase {
    * 触发全部事件
    */
   dispatch<IData = any>(data?: IData, dispatchView?: any): void;
+  /**
+   * 向所在页面的对象发送事件
+   */
+  dispatchToPage<IData = any>(data?: IData, dispatchView?: any): void;
 }
