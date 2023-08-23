@@ -70,7 +70,7 @@
         "@types/node": "^15.12.2",
         "lodash.get": "^4.4.2",
         "lodash.isequal": "^4.5.0",
-        "mipp": "^1.13.4",
-        "mipp-ali": "^1.22.3"
+        "mipp": "^1.14.0",
+        "mipp-ali": "^1.23.0"
     }
 }
