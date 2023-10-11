@@ -9,7 +9,7 @@ declare class ViewBase<IData extends Record<string, any>, IOptions = any> extend
     protected myComponents: any[];
     protected viewOptions: IOptions;
     static before(): Partial<{
-        onLoad: () => void;
+        onLoad: (query?: any) => void;
         onShow: () => void;
         onReady: () => void;
     }>;

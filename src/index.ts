@@ -41,7 +41,7 @@ class ViewBase<
   protected viewOptions: IOptions = {};
 
   static before(): Partial<{
-    onLoad: () => void;
+    onLoad: (query?: any) => void;
     onShow: () => void;
     onReady: () => void;
   }> {
